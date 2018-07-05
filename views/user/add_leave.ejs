@@ -1,0 +1,18 @@
+<%- include('../_layout/userheader') %>
+
+    <h2 class="page-title">Add leave </h2>
+    <a href="/user/leaves" class="btn btn-primary">Back to all page</a>
+    <form method="post" action="/user/leaves/add-leave">
+        <div class="form-group">
+            <label for="">Reason</label>
+            <input type="text" class="form-control" name="reason" value="<%= reason %>" placeholder="Enter Reason">
+        </div>
+
+        <div class="form-group">
+            <label for="">Days</label>
+            <input type="text" class="form-control" name="day" value="<%= day %>" placeholder="Enter number of days">
+        </div>
+        <button class="btn-default">Apply</button>
+    </form>
+
+    <%- include('../_layout/userfooter') %>

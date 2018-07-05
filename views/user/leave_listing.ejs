@@ -1,0 +1,31 @@
+<%- include('../_layout/userheader') %>
+
+<h2 class="page-title">Leave listing </h2>
+<a href="/user/leaves/add-leave" class="btn btn-primary">Add leave</a>
+<br><br>
+<% if(count>0) { %>
+<table class="table table-striped">
+    <thead>
+        <tr class="home">
+            <th>Leave Id</th>
+            <th>Reason</th>
+            <th>Days</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% leaves.forEach(function(leave){%>
+        <tr>
+            <td><%= leave._id %></td>
+            <td><%= leave.reason %></td>
+            <td><%= leave.day %></td>
+            <td>Approved</td>
+        </tr>
+        <% });%>
+    </tbody>
+</table>
+<%} else { %>
+<h3 class="text-center">There is no leave apply.</h3>
+<% } %>
+
+<%- include('../_layout/userfooter') %>

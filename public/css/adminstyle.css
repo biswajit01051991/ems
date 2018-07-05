@@ -1,0 +1,17 @@
+.sorting tr:not(.home){
+    cursor: pointer;
+}
+
+.ui-statte-highlight{
+    border: 1px dashed #ccc;
+}
+
+#imgPreviw {
+    margin: 20px;
+
+}
+
+#noimage {
+    width: 100px;
+    height: 100px;
+}
