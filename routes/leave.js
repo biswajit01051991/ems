@@ -2,12 +2,21 @@ var express = require('express');
 var router = express.Router();
 
 //Get Leave model 
-var Leave = require('./../models/leave')
+var Leave = require('./../models/leave');
 
+
+/*
+Get Dashboard page
+*/
+router.get('/', (req, res) => {
+    res.render('user/dashboard', {
+        'message': 'Content of Dashboard comming soon...'
+    });
+});
 /*
  * Get leave index
  */
-router.get('/', (req, res) => {
+router.get('/user/leaves', (req, res) => {
     var count;
     Leave.count(function (err, c) {
         count = c;
@@ -17,14 +26,14 @@ router.get('/', (req, res) => {
             return console.log(err);
         res.render('user/leave_listing', {
             leaves: leaves,
-            count:count
+            count: count
         });
     });
 });
 /*
  * Get leave page 
  */
-router.get('/add-leave', (req, res) => {
+router.get('/user/leaves/add-leave', (req, res) => {
 
     var reason = "";
     var day = "";
@@ -36,7 +45,7 @@ router.get('/add-leave', (req, res) => {
 /*
  * Post leave page 
  */
-router.post('/add-leave', (req, res) => {
+router.post('/user/leaves/add-leave', (req, res) => {
 
     req.checkBody('reason', 'Reason must have a value.').notEmpty();
     req.checkBody('day', 'Day must have a value.').notEmpty();
@@ -53,7 +62,7 @@ router.post('/add-leave', (req, res) => {
         });
     } else {
         console.log("success");
-        days= parseInt(day,10);
+        days = parseInt(day, 10);
         var leave = new Leave({
             reason: reason,
             day: days

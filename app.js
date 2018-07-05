@@ -93,7 +93,7 @@ var leaves = require('./routes/leave.js');
 //app.use('/admin/categories', adminCategories);
 //app.use('/admin/products', adminProducts);
 //app.use('/', pages);
-app.use('/user/leaves', leaves);
+app.use('/', leaves);
 //start the server
 //var port = 3000;
 app.listen(port, () => {
