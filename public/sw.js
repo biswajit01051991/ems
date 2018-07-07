@@ -37,6 +37,7 @@ self.addEventListener('activate', function(e) {
 self.addEventListener('fetch', function(event) {
   //console.log('[Service Worker] Fetch', event.request.url);
   //console.log(event.request);
+  console.log(event.request);
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
@@ -45,6 +46,7 @@ self.addEventListener('fetch', function(event) {
           return response;
         }
 
+       // if (e.request.cache === 'only-if-cached' && e.request.mode !== 'same-origin') return;
         // IMPORTANT: Clone the request. A request is a stream and
         // can only be consumed once. Since we are consuming this
         // once by cache and once by the browser for fetch, we need
